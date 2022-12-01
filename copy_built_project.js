@@ -29,7 +29,10 @@ const checkItems = (item) => {
 
 const copyItems = async (item) => {
   if (fs.existsSync('./vue-virtual-scroller')) {
-    await fsp.rmdir('./vue-virtual-scroller')
+    await fsp.rm('./vue-virtual-scroller', {
+      recursive: true,
+      force: true
+    })
   }
   await fsp.mkdir('./vue-virtual-scroller')
   item.forEach(element => {
