@@ -5,7 +5,12 @@
   "scripts": {
     "build": "pnpm run -r --filter=!demo build",
     "release": "pnpm run lint && pnpm run build && sheep release -b master --tag next",
-    "lint": "eslint --ext .js,.vue packages"
+    "lint": "eslint --ext .js,.vue packages",
+    "local_build:build_project": "cd ./packages/vue-virtual-scroller && npm install && cd ../.. && npm run build",
+    "local_build:prepare_local_folder": "npm run local_build:prepare_local_folder:install_production_dependency && npm run local_build:prepare_local_folder:copy_to_root",
+    "local_build:prepare_local_folder:install_production_dependency": "cd ./packages/vue-virtual-scroller && npm install --production && cd ../..",
+    "local_build:prepare_local_folder:copy_to_root": "node ./copy_built_project.js",
+    "local_build": "npm run local_build:build_project && npm run local_build:prepare_local_folder"
   },
   "devDependencies": {
     "@akryum/sheep": "^0.4.2",
@@ -20,6 +25,7 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^7.9.0"
+    "eslint-plugin-vue": "^7.9.0",
+    "fs-extra": "^11.1.0"
   }
 }
