@@ -8,11 +8,6 @@ const neededItems = [
     'type': 'folder'
   },
   {
-    'path': './packages/vue-virtual-scroller/node_modules',
-    'key_name': 'node_modules',
-    'type': 'folder'
-  },
-  {
     'path': './packages/vue-virtual-scroller/package.json',
     'key_name': 'package.json',
     'type': 'file'
